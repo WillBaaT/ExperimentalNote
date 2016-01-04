@@ -83,5 +83,3 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 	window.CBPFWTabs = CBPFWTabs;
 
 })( window );
-
-new CBPFWTabs( document.getElementById( 'tabs' ) );
