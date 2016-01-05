@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
+  get 'notes' => 'notes#notesindex'
   get 'newpost' => 'pages#newpost'
   resources :messages #don't know why
   # The priority is based upon order of creation: first created -> highest priority.
