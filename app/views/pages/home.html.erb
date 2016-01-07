@@ -55,10 +55,10 @@
 					</section>
 					<section id="section-2">
   						<div class="container">
-  							<% @messages.each do |message| %>
+  							<% @messages.reverse_each do |message| %>
     							<div class="message" >
-      								<p class="content"><%= message.content %></p>
-      								<p class="time"><%= message.created_at %></p>
+      								<p class="postcontent"><%= message.content %></p>
+      								<p class="posttime"><%= message.created_at.strftime("%B %d, %Y %H:%m") %></p>
     							</div>
     						<%end%>
     						<%= link_to 'New Post', "newpost" %>

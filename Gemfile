@@ -5,7 +5,11 @@ ruby '2.1.5'
 gem 'puma'
 group :development do
 gem 'sqlite3'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
 end
+
+
 group :production do
    gem 'pg'
    gem 'rails_12factor'

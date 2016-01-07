@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-	def index
+	def notesindex
 	end
 	def pcr
 	end
