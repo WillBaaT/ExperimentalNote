@@ -5,13 +5,13 @@ ruby '2.1.5'
 gem 'puma'
 group :development do
 gem 'sqlite3'
-gem 'capistrano-rails'
-gem 'capistrano-passenger'
+
 end
 
-
+gem 'capistrano-rails', :group => :development
+gem 'capistrano-passenger', :group => :development
 group :production do
-   gem 'pg'
+   gem 'mysql2'
    gem 'rails_12factor'
 end
 
