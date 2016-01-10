@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20160104222835) do
   end
 
   create_table "notes", force: :cascade do |t|
+    t.text     "gene"
+    t.text     "primer"
+    t.text     "pcrp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

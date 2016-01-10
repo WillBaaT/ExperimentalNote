@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # for heroku
-ruby '2.1.5'
+ruby '2.3.0'
 gem 'puma'
 group :development do
 gem 'sqlite3'
@@ -11,7 +11,7 @@ end
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
 group :production do
-   gem 'mysql2'
+   gem 'postgresql'
    gem 'rails_12factor'
 end
 
