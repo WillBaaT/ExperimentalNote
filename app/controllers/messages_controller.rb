@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 		if @message.save
 			redirect_to '/'
 		else
-			render 'newpost'
+			redirect_to :back
 		end
 	end
 	private

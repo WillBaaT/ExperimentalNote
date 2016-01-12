@@ -20,11 +20,17 @@ ActiveRecord::Schema.define(version: 20160104222835) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.text     "gene"
-    t.text     "primer"
-    t.text     "pcrp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "gene_name"
+    t.string   "f_primer"
+    t.string   "r_primer"
+    t.string   "f_primer_sq"
+    t.string   "r_primer_sq"
+    t.string   "f_re"
+    t.string   "r_re"
+    t.string   "final_vector"
+    t.string   "product_size"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
