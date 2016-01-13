@@ -2,9 +2,9 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new(message_params)
 		if @message.save
-			redirect_to '/'
+			redirect_to "/"
 		else
-			redirect_to :back
+			render "pages/newpost"
 		end
 	end
 	private

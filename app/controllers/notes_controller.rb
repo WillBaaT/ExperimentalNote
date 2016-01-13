@@ -2,7 +2,9 @@ class NotesController < ApplicationController
 	def notesindex
 	end
 	def pcr
-		@note = Note.new
+		@gene = Gene.new
+		@pcr = Pcr.new
+		@primer = Primer.new
 	end
 	def ligation
 	end

@@ -14,21 +14,35 @@
 	</head>
 	<body>
 		<div class="container">
-			<header class="clearfix">
-				<h1>Experimental Note</h1>
-			</header>	
 			<div id="tabs" class="tabs hometabs">
+			<header class="clearfix">
+				<h1 class="title-current">Post</h1>
+				<h1>Experimental Note</h1>
+				<h1>Person on Duty</h1>
+				<h1>Group Buying</h1>
+			</header>	
 				<nav>
 					<ul>
-						<li><a href="#section-1" class="icon-pencil"><span>Note</span></a></li>
-						<li><a href="#section-2" class="icon-comment-o"><span>Post</span></a></li>
+						<li><a href="#section-1" class="icon-comment-o"><span>Post</span></a></li>
+						<li><a href="#section-2" class="icon-pencil"><span>Note</span></a></li>
 						<li><a href="#section-3" class="icon-recycle"><span>Duty</span></a></li>
-						<li><a href="#section-4" class="icon-credit-card"><span>Order</span></a></li>
+						<li><a href="#section-4" class="icon-credit-card"><span>Buying</span></a></li>
 						<!--<li><a href="#section-5" class="icon-cog"><span>Setting</span></a></li>-->
 					</ul>
 				</nav>
 				<div class="content">
 					<section id="section-1">
+  						<div class="container">
+  							<% @messages.reverse_each do |message| %>
+    							<div class="message" >
+      								<p class="postcontent"><%= message.content %></p>
+      								<p class="posttime"><%= message.created_at.strftime("%B %d, %Y %H:%m") %></p>
+    							</div>
+    						<%end%>
+    						<%= link_to 'New Post', "newpost" %>
+  						</div>
+					</section>
+					<section id="section-2">
 						<div class="mediabox bigbtn">
 							<%= link_to notes_path do %>
 							<div>
@@ -53,28 +67,17 @@
 							<p>Readme.</p>
 						</div>
 					</section>
-					<section id="section-2">
-  						<div class="container">
-  							<% @messages.reverse_each do |message| %>
-    							<div class="message" >
-      								<p class="postcontent"><%= message.content %></p>
-      								<p class="posttime"><%= message.created_at.strftime("%B %d, %Y %H:%m") %></p>
-    							</div>
-    						<%end%>
-    						<%= link_to 'New Post', "newpost" %>
-  						</div>
-					</section>
 					<section id="section-3">
-						<div class="mediabox">
+						<div class="mediabox bigbtn">
 							<div>
-							<img src="image/clone-s.svg" alt="cloning" />
+							<img src="image/arabidopsis-s.svg" alt="plant growing" />
 							</div>
-							<h3>Cloning and construction</h3>
+							<h3>Arabidopsis</h3>
 							<p>Readme.</p>
 						</div>
 					</section>
 					<section id="section-4">
-						<div class="mediabox">
+						<div class="mediabox bigbtn">
 							<div>
 							<img src="image/clone-s.svg" alt="cloning" />
 							</div>
@@ -122,6 +125,8 @@
 	};
 
 	CBPFWTabs.prototype._init = function() {
+		this.titles = [].slice.call( this.el.querySelectorAll( 'header > h1' ) );
+
 		// tabs elemes
 		this.tabs = [].slice.call( this.el.querySelectorAll( 'nav > ul > li' ) );
 		// content items
@@ -146,11 +151,13 @@
 
 	CBPFWTabs.prototype._show = function( idx ) {
 		if( this.current >= 0 ) {
+			this.titles[ this.current ].className = '';
 			this.tabs[ this.current ].className = '';
 			this.items[ this.current ].className = '';
 		}
 		// change current
 		this.current = idx != undefined ? idx : this.options.start >= 0 && this.options.start < this.items.length ? this.options.start : 0;
+		this.titles[ this.current ].className = 'title-current';
 		this.tabs[ this.current ].className = 'tab-current';
 		this.items[ this.current ].className = 'content-current';
 	};

@@ -12,31 +12,51 @@
 	</head>
 	<body>
 		<div class="container">
-			<header class="clearfix">
-				<h1>Gene Cloning</h1>
-			</header>
 			<div class="noteback">
-			<%= form_for(@note) do |f| %>
-		    	<%= f.label :gene_name,"Name of Gene" %><br>
-		        <%= f.text_field :gene_name, :size => "10" %><p>
-		        <%= f.label :f_primer,"Forward Primer" %><br>
-		        <%= f.text_field :f_primer %><%= f.text_field :f_re, :size => "1"%><br>
-		        <%= f.label :r_primer,"Reverse Primer" %><br>
-		        <%= f.text_field :r_primer %><%= f.text_field :r_re, :size => "1"%><p>
-		        <%= f.label :final_vector,"Final Vector" %><br>
-		        <%= f.text_field :product_size %><%= f.button "Check" %><p>
-		        <%= f.label :product_size,"Product Size" %><br>
-		        <%= f.text_field :product_size %><p>
-		    </div>
-
-		    <%end%>
+				<header class="clearfix">
+					<h1 class="title-current">Gene Cloning</h1>
+				</header>
+				<div class="stepback">
+				<p>Informations of Gene</p><br>
+				<%= form_for(@gene) do |f| %>
+			    	<%= f.label :number,"Gene ID"%> 
+			        <%= f.text_field :number, :placeholder => "At1g01010" %><br><br>
+			        <%= f.label :name,"Gene Name" %>
+			        <%= f.text_field :name %><br><br><br>
+			    <%end%>
+				</div>
+			    <div class="stepback">
+				<p>Cloning</p><br>
+				<%= form_for(@pcr) do |f| %>
+			    	<%= f.label :fragment_name,"Name"%> 
+			        <%= f.text_field :fragment_name %><br><br>
+			        <%= f.label :product_size,"Size" %>
+			        <%= f.text_field :product_size, :placeholder => "bp" %><br><br>
+			        <%= f.label :fuse,"Protein Fussion"%> 
+			        <%= f.text_field :fuse %><br><br><br>
+			    <%end%>
+				</div>
+				<div id = "pcr" class="stepback">
+				<p>PCR</p><br>
+				
+				<%= form_for(@pcr) do |f| %>
+					<%= f.label :enzyme %> 
+			        <%= f.text_field :enzyme %><br><br>
+					<%= f.label :machine %> 
+			        <%= f.text_field :machine %><br><br><br>
+			        <div id="temp">
+			        <%= f.text_field :break, :class => "short"%>°C<br><br>
+			        <%= f.text_field :denature, :class => "short"%>°C<br>
+			        <%= f.text_field :annealing, :class => "short"%>°C<br>
+			        <%= f.text_field :elongation, :class => "short"%>°C<br><br>
+			        <%= f.text_field :polya, :class => "short"%>°C<br><br>
+			    	</div>
+			        <%= f.text_field :cycles, :class => "short",:id => "cycles" %>
+			        <%= f.label :cycles, :id => "cyclest" %><br><br><br>
+			    <%end%>
+				</div>
+			    </div>
+			</div>
 		</div>
 	</body>
-	<style>
-	.noteback{
-		max-width: 500px;
-		margin: 0px, auto;
-		padding: 20px;
-	}
-	</style>
 </html>

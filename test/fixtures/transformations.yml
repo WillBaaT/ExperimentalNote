@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ligation_id: 1
+  bac: MyString
+  ice_time: 1
+  liq_nitrogen: 1
+  heat_time: 1
+  recovery_time: 1
+  plate_id: 1
+  incubate: 1
+
+two:
+  ligation_id: 1
+  bac: MyString
+  ice_time: 1
+  liq_nitrogen: 1
+  heat_time: 1
+  recovery_time: 1
+  plate_id: 1
+  incubate: 1

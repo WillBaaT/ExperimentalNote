@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  spieces: MyString
+  number: MyString
+  name: MyString
+  domain: MyString
+  fuse: false
+
+two:
+  spieces: MyString
+  number: MyString
+  name: MyString
+  domain: MyString
+  fuse: false

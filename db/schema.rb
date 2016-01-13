@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104222835) do
+ActiveRecord::Schema.define(version: 20160113203526) do
+
+  create_table "genes", force: :cascade do |t|
+    t.string   "species"
+    t.string   "number"
+    t.string   "name"
+    t.string   "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ligations", force: :cascade do |t|
+    t.integer  "pcr_id"
+    t.float    "insert_q"
+    t.string   "vector"
+    t.float    "vector_q"
+    t.string   "ligase"
+    t.integer  "temp"
+    t.string   "during"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.text     "content"
@@ -31,6 +52,61 @@ ActiveRecord::Schema.define(version: 20160104222835) do
     t.string   "product_size"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "pcrs", force: :cascade do |t|
+    t.integer  "gene_id"
+    t.string   "fragment_name"
+    t.integer  "product_size"
+    t.string   "final_vector"
+    t.string   "fuse"
+    t.string   "machine"
+    t.string   "enzyme"
+    t.integer  "break"
+    t.integer  "denature"
+    t.integer  "annealing"
+    t.integer  "elongation"
+    t.integer  "polya"
+    t.integer  "cycles"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "plates", force: :cascade do |t|
+    t.string   "antibiotic"
+    t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "primer_pcrships", force: :cascade do |t|
+    t.integer  "pcr_id"
+    t.integer  "primer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "primers", force: :cascade do |t|
+    t.string   "f_or_r"
+    t.integer  "length"
+    t.string   "re"
+    t.string   "string"
+    t.float    "tm"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transformations", force: :cascade do |t|
+    t.integer  "ligation_id"
+    t.string   "bac"
+    t.integer  "ice_time"
+    t.integer  "liq_nitrogen"
+    t.integer  "heat_time"
+    t.integer  "recovery_time"
+    t.integer  "plate_id"
+    t.integer  "incubate"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

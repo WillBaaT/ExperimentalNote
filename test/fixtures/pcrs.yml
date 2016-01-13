@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gene_id: 1
+  fragment_name: MyString
+  f_primer: MyString
+  r_primer: MyString
+  product_size: 1
+  final_vector: MyString
+
+two:
+  gene_id: 1
+  fragment_name: MyString
+  f_primer: MyString
+  r_primer: MyString
+  product_size: 1
+  final_vector: MyString

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#home'
   get 'notes' => 'notes#notesindex'
-  
+  resources :genes
+  resources :pcrs
+    resources :primers
   get 'notes/pcr' => 'notes#pcr'
   get 'notes/ligation' => 'notes#ligation'
   get 'notes/transformation' => 'notes#transformation'

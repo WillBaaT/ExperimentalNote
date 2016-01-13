@@ -1,0 +1,67 @@
+	p{
+		margin: 10px -10%;
+		font-size: 1.425em;
+	}
+	.noteback{
+		width: 100%;
+	}
+	.stepback{
+		position: relative;
+		padding: 0 10%;		
+		margin: 0 auto;
+		max-width: 550px;
+		line-height: 13px;
+	}
+	label{
+		width: 50%;
+  		float: left;
+  		padding-right: 10px;
+	}
+	.short{
+		width: 25px;
+	}
+	input{
+		width:50%;
+	}
+	#temp{
+		position: absolute;
+		left: 50%;
+	}
+	#cycles{
+		position: absolute;
+			top: 119%;
+			right:23%;
+	}
+	#cyclest{
+		position: absolute;
+			top: 123%;
+			right:18%;
+		width: 25px;
+	}
+	@media (max-width: 32em) {
+	label{
+		width: 100%;
+	}
+	input{
+		width:100%;
+	}
+	p{
+		margin: 10px 0;
+		font-size: 1.425em;
+	}
+	#temp{
+		position: absolute;
+		left: 30%;
+	}
+	#cycles{
+		position: absolute;
+			top: 119%;
+			right:40%;
+	}
+	#cyclest{
+		position: absolute;
+			top: 123%;
+			right:31%;
+		width: 25px;
+	}
+	}

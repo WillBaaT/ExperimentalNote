@@ -20,11 +20,13 @@
 
 	</head>
 	<body>
-		<div class="container">
-			<header class="clearfix">
-				<h1>Experimental Note</h1>
-			</header>	
+	<div class="container">
 			<div id="tabs" class="tabs notetabs">
+				<header class="clearfix">
+					<h1 class="title-current">Cloning</h1>
+					<h1>Plant Growing</h1>
+					<h1>Concentration Caculator</h1>
+				</header>	
 				<nav>
 					<ul>
 						<li><a href="#section-1" class="icon-clone-icon"><span>Cloning</span></a></li>
@@ -119,6 +121,8 @@
 	};
 
 	CBPFWTabs.prototype._init = function() {
+		this.titles = [].slice.call( this.el.querySelectorAll( 'header > h1' ) );
+
 		// tabs elemes
 		this.tabs = [].slice.call( this.el.querySelectorAll( 'nav > ul > li' ) );
 		// content items
@@ -143,15 +147,16 @@
 
 	CBPFWTabs.prototype._show = function( idx ) {
 		if( this.current >= 0 ) {
+			this.titles[ this.current ].className = '';
 			this.tabs[ this.current ].className = '';
 			this.items[ this.current ].className = '';
 		}
 		// change current
 		this.current = idx != undefined ? idx : this.options.start >= 0 && this.options.start < this.items.length ? this.options.start : 0;
+		this.titles[ this.current ].className = 'title-current';
 		this.tabs[ this.current ].className = 'tab-current';
 		this.items[ this.current ].className = 'content-current';
 	};
-
 	// add to global namespace
 	window.CBPFWTabs = CBPFWTabs;
 

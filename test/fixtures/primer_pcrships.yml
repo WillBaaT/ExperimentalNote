@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pcr_id: 1
+  primer_id: 1
+
+two:
+  pcr_id: 1
+  primer_id: 1
