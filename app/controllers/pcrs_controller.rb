@@ -8,19 +8,19 @@ class PcrsController < ApplicationController
   end
 
   def new
-    @gene = Gene.new
     @pcr = Pcr.new
+    @pcr.create_gene
   end
  
   def create
     @pcr = Pcr.new(pcr_params)
-    @pcr.save
-    redirect_to pcrs_path
-#    if @pcr.save
+#    @pcr.save
 #    redirect_to pcrs_path
-#    else
-#    render new_pcr_path
-#    end
+    if @pcr.save
+    redirect_to pcrs_path
+    else
+    render new_pcr_path
+    end
   end
   def show
   	
@@ -57,6 +57,7 @@ class PcrsController < ApplicationController
       :cycles,
   		
   		:gene_attributes => [
+        :id,
   	  	:species,
         :number,
         :name,
