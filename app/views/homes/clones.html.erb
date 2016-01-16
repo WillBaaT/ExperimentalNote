@@ -37,10 +37,18 @@
 				<div class="content">
 					<section id="section-1">
 						<div class="smallbtn">
-							<%= link_to pcrs_path do %>
-							<div>
-							<%=image_tag("cloning/PCR1.svg",alt: "PCR")%>
-							</div>
+							<%if Gene.first.nil?%>
+								<%= link_to new_pcr_path do%>
+								<div>
+								<%=image_tag("cloning/PCR1.svg",alt: "PCR")%>
+								</div>
+								<% end %>
+								<%else%>
+								<%= link_to pcrs_path do %>
+								<div>
+								<%=image_tag("cloning/PCR1.svg",alt: "PCR")%>
+								</div>
+								<% end %>
 							<% end %>
 							<h3>PCR</h3>
 							<p>Input your gene name, primer name and other informations.</p>
