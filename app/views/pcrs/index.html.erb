@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>CHYLab - Experimental Note</title>
+		<meta name="Will" content="CHYLab - Experimental Note" />
+		<script type="text/javascript" src="index.js"></script>
+		<link href="/assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+		<script src="/assets/application.js?body=1" type="text/javascript"></script>
+	</head>
+<body>
+	<div class="container">
+			<div class="noteback">
+				<header class="clearfix">
+					<h1 class="title-current">PCR status</h1>
+				</header>
+				<div class="pcr">
+				<% @gene.each do |t| %>
+				<h2><%= t.name %></h2>
+				<% @pcr.each do |t| %>
+				<div class="lable">
+					Fragment:	<br>
+					Size:  		<br>
+				</div>
+				<div class="lable">
+					<%=t.size%>	<br>
+					<%=t.enzyme%><br>
+				</div>
+				<%= link_to 'Show', :controller => 'pcrs', :action => 'show', :id => @pcr %>
+  <%= link_to 'Edit', :controller => 'pcrs', :action => 'edit', :id => @pcr %>
+  <%= link_to 'Delete', :controller => 'pcrs', :action => 'destroy', :id => @pcr %>
+  <%= link_to 'New Pcr', :controller => 'pcrs', :action => 'new' %>
+				<%end%>
+				<%end%>
+				</div>
+			    <div class="stepback">
+				
+				</div>
+				<div id = "pcr" class="stepback">
+				
+				</div>
+			</div>
+		</div>
+	
+</body>
+</html>
