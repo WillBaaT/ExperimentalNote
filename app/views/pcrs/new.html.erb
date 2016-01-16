@@ -18,48 +18,53 @@
 				</header>
 				<div class="stepback">
 				<p>About the Gene</p><br>
-				<%= form_for @pcr do |pf| %>
-					<%= fields_for @pcr.gene do |gf| %>
-			    		<%= gf.label :number,"Gene ID"%> 
-			        	<%= gf.text_field :number, :placeholder => "At1g01010" %><br><br>
-			        	<%= gf.label :name,"Gene Name" %>
-			        	<%= gf.text_field :name %><br><br><br>
-			        <%end%>
+				<%= form_for @gene, :url=>pcrs_path do |gf| %>
+			    	<%= gf.label :number,"Gene ID"%><p class = "err_message"><%= @gene.errors.full_messages.first do |m| %><% end %></p>
+			        <%= gf.text_field :number, :placeholder => "At1g01010" %><br><br>
+			        <%= gf.label :name,"Gene Name" %>
+			        <%= gf.text_field :name %><br><br><br>
 				</div>
-					
 			    <div class="stepback">
-				<p>Fragment</p><br>
-			    	<%= pf.label :fragment_name,"Name"%> 
-			        <%= pf.text_field :fragment_name %><br><br>
-			        <%= pf.label :product_size,"Size" %>
-			        <%= pf.text_field :product_size, :placeholder => "bp" %><br><br>
-			        <%= pf.label :final_vector %>
-			        <%= pf.text_field :final_vector %><br><br><br>
-				</div>
-				<div id = "pcr" class="stepback">
-				<p>PCR condition</p><br>
-				
-					<%= pf.label :enzyme,"Polymerase" %>
-			        <%= pf.text_field :enzyme %><br><br>
-					<%= pf.label :machine %> 
-			        <%= pf.text_field :enzyme %><br><br><br>
-			        <div id="temp">
-			        <%= pf.text_field :break, :class => "short"%>°C <%= pf.text_field :break_t, :class => "short"%><br><br>
-			        <%= pf.text_field :denature, :class => "short"%>°C <%= pf.text_field :denature_t, :class => "short"%><br>
-			        <%= pf.text_field :annealing, :class => "short"%>°C <%= pf.text_field :annealing_t, :class => "short"%><br>
-			        <%= pf.text_field :elongation, :class => "short"%>°C <%= pf.text_field :elongation_t, :class => "short"%><br><br>
-			        <%= pf.text_field :polya, :class => "short"%>°C <%= pf.text_field :polya_t, :class => "short"%><br><br>
-			        <%= pf.text_field :cycles, :class => "short",:id => "cycles" %>
-			        <%= pf.label :cycles, :id => "cyclest" %>
-			        </div>
-			        <%= pf.submit "Submit", :class => "pcr_submit" %>
-			        
+			    	<p>Fragment</p><br>
+			    	<%= gf.fields_for :pcrs do |pf| %>
+			    		<%= pf.label :fragment_name,"Name"%>
+			        	<%= pf.text_field :fragment_name %><br><br>
+				        <%= pf.label :product_size,"Size" %>
+			    	    <%= pf.text_field :product_size, :placeholder => "bp" %><br><br>
+			    	    <%= pf.label :final_vector %>
+			    	    <%= pf.text_field :final_vector %><br><br><br>
+			    </div>
+			    <div id = "pcr" class="stepback">
+			    <p>PCR condition</p><br>
+				    	<%= pf.label :enzyme,"Polymerase" %>
+				        <%= pf.text_field :enzyme %><br><br>
+				    	<%= pf.label :machine %> 
+				        <%= pf.text_field :enzyme %><br><br><br>
+				    	<div id="temp">
+				        <%= pf.number_field :break, :class => "short",					in:95..100%> °C
+				        <%= pf.number_field :break_t, :class => "short",				in:1..2%> min<br><br>
+				        <%= pf.number_field :denature, :class => "short",				in:95..100%> °C
+				        <%= pf.number_field :denature_t, :class => "short",				in:1..2%> min<br>
+				        <%= pf.number_field :annealing, :class => "short",				in:40..60%> °C
+				        <%= pf.number_field :annealing_t, :class => "short",			in:1..2%> min<br>
+				        <%= pf.number_field :elongation, :class => "short",				in:65..75%> °C
+				        <%= pf.number_field :elongation_t, :class => "short",			in:1..10%> min<br><br>
+				        <%= pf.number_field :polya, :class => "short",					in:65..75%> °C
+				        <%= pf.number_field :polya_t, :class => "short",				in:1..10%> min<br><br>
+				        <%= pf.number_field :cycles, :class => "short",:id => "cycles",	in:20..45%>
+				        <%= pf.label :cycles, :id => "cyclest" %>
+				        </div>
+				        <%= pf.submit "Submit", :class => "pcr_submit" %>
+			    	<%end%>   
 			    <%end%>
 				</div>
 			</div>
 		</div>
 	</body>
 	<style>
+		.short{
+			width: 40px;
+		}
 		#cycles{
 			position: absolute;
 			top: 38.5%;

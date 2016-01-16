@@ -8,19 +8,23 @@ class PcrsController < ApplicationController
   end
 
   def new
-    @pcr = Pcr.new
-    @pcr.create_gene
+    @gene = Gene.new
+    @gene.pcrs.build #build a blank pcrs form
   end
  
   def create
-    @pcr = Pcr.new(pcr_params)
-#    @pcr.save
-#    redirect_to pcrs_path
-    if @pcr.save
+    # if Gene.find_by_name(params[:gene][:name]) 
+    #   params[:pcrs][:gene_id] = Gene.find(Gene.find_by_name(params[:gene][:name]).id)
+    #    @gene = Gene.find(Gene.find_by_name(params[:gene][:name]).id)
+    # else
+    #   @gene = Gene.new(gene_params)
+    # end
+    if @gene.save
     redirect_to pcrs_path
     else
     render new_pcr_path
     end
+  
   end
   def show
   	
@@ -36,10 +40,16 @@ class PcrsController < ApplicationController
   end
 
   private
-  def pcr_params
-  	params.require(:pcr).permit(
+  def gene_params
+  	params.require(:gene).permit(
+      :id,
+      :species,
+      :number,
+      :name,
+      :size,
+  		:pcrs_attributes => [
       :gene_id,
-      :fragment_name,
+      :fragment_name, 
       :product_size,
       :final_vector,
       :machine,
@@ -55,14 +65,7 @@ class PcrsController < ApplicationController
       :polya,
       :polya_t,
       :cycles,
-  		
-  		:gene_attributes => [
-        :id,
-  	  	:species,
-        :number,
-        :name,
-        :size,
-		    :_destroy]
+      :_destroy]
 	)
   end
 end

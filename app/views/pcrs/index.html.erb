@@ -16,9 +16,10 @@
 			<header class="clearfix">
 				<h1 class="title-current">PCR status</h1>
 			</header>
+			
 			<% @gene.each do |g| %>
 			<div class="gene">
-				<h2><%= g.name %></h2>
+				<h2><%= g.name %><%= g.id %></h2>
 				<% g.pcrs.each do |p| %>
 				<div class="pcr">
 				<div class="lable">
@@ -26,12 +27,11 @@
 					Size:  		<br>
 				</div>
 				<div class="detail">
-					<%=p.fragment_name%>	<br>
+					<%=p.fragment_name%><%=p.gene_id%>	<br>
 					<%=p.product_size%><%=" bp" unless p.product_size.nil?%><br>
 				</div>
 				<div class="edit">
-					<%= link_to "edit", edit_pcr_path(@pcr) %>	<br>
-					<%  %><br>
+					<%= link_to "edit", edit_pcr_path(@pcr) %>	<br><br>
 				</div>
 				</div>
 				<%end%>
