@@ -12,37 +12,40 @@
 	</head>
 <body>
 	<div class="container">
-			<div class="noteback">
-				<header class="clearfix">
-					<h1 class="title-current">PCR status</h1>
-				</header>
-				<div class="pcr">
-				<% @gene.each do |t| %>
-				<h2><%= t.name %></h2>
-				<% @pcr.each do |t| %>
+		<div class="noteback">
+			<header class="clearfix">
+				<h1 class="title-current">PCR status</h1>
+			</header>
+			<% @gene.each do |g| %>
+			<div class="genes">
+				<h2><%= g.name %></h2>
+				<% g.pcrs.each do |p| %>
 				<div class="lable">
 					Fragment:	<br>
 					Size:  		<br>
 				</div>
-				<div class="lable">
-					<%=t.size%>	<br>
-					<%=t.enzyme%><br>
+				<div class="detail">
+					<%=p.fragment_name%>	<br>
+					<%=p.enzyme%><br>
 				</div>
-				<%= link_to 'Show', :controller => 'pcrs', :action => 'show', :id => @pcr %>
-  <%= link_to 'Edit', :controller => 'pcrs', :action => 'edit', :id => @pcr %>
-  <%= link_to 'Delete', :controller => 'pcrs', :action => 'destroy', :id => @pcr %>
-  <%= link_to 'New Pcr', :controller => 'pcrs', :action => 'new' %>
+				<div class="edit">
+					<%= link_to "edit", edit_pcr_path(@pcr) %>	<br>
+					<%=  %><br>
+				</div>
 				<%end%>
-				<%end%>
-				</div>
-			    <div class="stepback">
-				
-				</div>
-				<div id = "pcr" class="stepback">
-				
-				</div>
-			</div>
+			</div>				
+			<%end%>
 		</div>
-	
+	</div>
 </body>
+<style>
+	.genes{
+		overflow: auto;
+	}
+	.lable, .detail{
+		float: left;
+		width:50%;
+		margin-bottom: 10px;
+	}
+</style>
 </html>

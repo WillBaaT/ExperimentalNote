@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   resources :posts
 
   get 'molecular' => 'homes#clones'
-  get 'pcr' => 'pcrs#pcr'
-  post 'pcr/all' => 'pcrs#index'  
+  
   resources :pcrs
-  resources :gene
+  resources :ligations
+  resources :genes
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
