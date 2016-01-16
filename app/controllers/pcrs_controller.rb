@@ -6,17 +6,21 @@ class PcrsController < ApplicationController
   	#	redirect_to pcr_path
   	#end
   end
+
   def new
-  	@gene = Gene.new
-  	@pcr = Pcr.new
+    @gene = Gene.new
+    @pcr = Pcr.new
   end
+ 
   def create
-  	@gene = Gene.new(gene_params)
-	if @gene.save
-		redirect_to pcrs_path
-	else
-		render pcr_path
-	end
+    @pcr = Pcr.new(pcr_params)
+    @pcr.save
+    redirect_to pcrs_path
+#    if @pcr.save
+#    redirect_to pcrs_path
+#    else
+#    render new_pcr_path
+#    end
   end
   def show
   	
@@ -32,31 +36,32 @@ class PcrsController < ApplicationController
   end
 
   private
-  def gene_params
-  	params.require(:gene).permit(
-  		:species,
-  		:number,
-  		:name,
-  		:size,
-  		:pcr_attributes => [
-  			:id,
-        :fragment_name,
-	  		:product_size,
-		  	:final_vector,
-		  	:machine,
-		  	:enzyme,
-		  	:break,
-		  	:break_t,
-		  	:denature,
-		  	:denature_t,
-		  	:annealing,
-		  	:annealing_t,
-		  	:elongation,
-		  	:elongation_t,
-		  	:polya,
-		  	:polya_t,
-		  	:cycles,
-		  	:_destroy]
+  def pcr_params
+  	params.require(:pcr).permit(
+      :gene_id,
+      :fragment_name,
+      :product_size,
+      :final_vector,
+      :machine,
+      :enzyme,
+      :break,
+      :break_t,
+      :denature,
+      :denature_t,
+      :annealing,
+      :annealing_t,
+      :elongation,
+      :elongation_t,
+      :polya,
+      :polya_t,
+      :cycles,
+  		
+  		:gene_attributes => [
+  	  	:species,
+        :number,
+        :name,
+        :size,
+		    :_destroy]
 	)
   end
 end

@@ -18,40 +18,42 @@
 				</header>
 				<div class="stepback">
 				<p>Informations of Gene</p><br>
-				<%= form_for @gene, :url => { :controller => 'pcrs', :action => 'create' } do |gene_form| %>
-			    	<%= gene_form.label :number,"Gene ID"%> 
-			        <%= gene_form.text_field :number, :placeholder => "At1g01010" %><br><br>
-			        <%= gene_form.label :name,"Gene Name" %>
-			        <%= gene_form.text_field :name %><br><br><br>
+				<%= form_for @pcr do |pf| %>
+					<%= fields_for :gene do |gf| %>
+			    		<%= gf.label :number,"Gene ID"%> 
+			        	<%= gf.text_field :number, :placeholder => "At1g01010" %><br><br>
+			        	<%= gf.label :name,"Gene Name" %>
+			        	<%= gf.text_field :name %><br><br><br>
+			        <%end%>
 				</div>
+					
 			    <div class="stepback">
 				<p>Cloning</p><br>
-				<%= fields_for :pcrs, :url => { :controller => 'pcrs', :action => 'create'} do |p| %>
-			    	<%= p.label :fragment_name,"Name"%> 
-			        <%= p.text_field :fragment_name %><br><br>
-			        <%= p.label :product_size,"Size" %>
-			        <%= p.text_field :product_size, :placeholder => "bp" %><br><br>
-			        <%= p.label :final_vector %>
-			        <%= p.text_field :final_vector %><br><br><br>
+			    	<%= pf.label :fragment_name,"Name"%> 
+			        <%= pf.text_field :fragment_name %><br><br>
+			        <%= pf.label :product_size,"Size" %>
+			        <%= pf.text_field :product_size, :placeholder => "bp" %><br><br>
+			        <%= pf.label :final_vector %>
+			        <%= pf.text_field :final_vector %><br><br><br>
 				</div>
 				<div id = "pcr" class="stepback">
 				<p>PCR</p><br>
 				
-					<%= p.label :enzyme,"Polymerase" %>
-			        <%= p.text_field :enzyme %><br><br>
-					<%= p.label :machine %> 
-			        <%= p.text_field :enzyme %><br><br><br>
+					<%= pf.label :enzyme,"Polymerase" %>
+			        <%= pf.text_field :enzyme %><br><br>
+					<%= pf.label :machine %> 
+			        <%= pf.text_field :enzyme %><br><br><br>
 			        <div id="temp">
-			        <%= p.text_field :break, :class => "short"%>°C <%= p.text_field :break_t, :class => "short"%><br><br>
-			        <%= p.text_field :denature, :class => "short"%>°C <%= p.text_field :denature_t, :class => "short"%><br>
-			        <%= p.text_field :annealing, :class => "short"%>°C <%= p.text_field :annealing_t, :class => "short"%><br>
-			        <%= p.text_field :elongation, :class => "short"%>°C <%= p.text_field :elongation_t, :class => "short"%><br><br>
-			        <%= p.text_field :polya, :class => "short"%>°C <%= p.text_field :polya_t, :class => "short"%><br><br>
-			        <%= p.text_field :cycles, :class => "short",:id => "cycles" %>
-			        <%= p.label :cycles, :id => "cyclest" %>
+			        <%= pf.text_field :break, :class => "short"%>°C <%= pf.text_field :break_t, :class => "short"%><br><br>
+			        <%= pf.text_field :denature, :class => "short"%>°C <%= pf.text_field :denature_t, :class => "short"%><br>
+			        <%= pf.text_field :annealing, :class => "short"%>°C <%= pf.text_field :annealing_t, :class => "short"%><br>
+			        <%= pf.text_field :elongation, :class => "short"%>°C <%= pf.text_field :elongation_t, :class => "short"%><br><br>
+			        <%= pf.text_field :polya, :class => "short"%>°C <%= pf.text_field :polya_t, :class => "short"%><br><br>
+			        <%= pf.text_field :cycles, :class => "short",:id => "cycles" %>
+			        <%= pf.label :cycles, :id => "cyclest" %>
 			        </div>
-			        <%= p.submit "Submit", :class => "pcr_submit" %>
-			        <%end%>
+			        <%= pf.submit "Submit", :class => "pcr_submit" %>
+			        
 			    <%end%>
 				</div>
 			</div>
