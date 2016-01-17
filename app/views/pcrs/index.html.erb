@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="noteback">
 			<header class="clearfix">
-				<h1 class="title-current">PCR status</h1>
+				<h1 class="title-current">PCR products</h1>
 			</header>
 			
 			<% @gene.each do |g| %>
@@ -29,6 +29,7 @@
 				<div class="detail">
 					<%=p.fragment_name%><br>
 					<%=p.product_size%><%=" bp" unless p.product_size.nil?%><br>
+					<%=p.created_at.strftime("%H:%M %D")%>
 				</div>
 				<div class="edit">
 					<%= link_to "edit", edit_pcr_path(@pcr) %>	<br><br>

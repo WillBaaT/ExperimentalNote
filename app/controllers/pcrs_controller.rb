@@ -2,9 +2,9 @@ class PcrsController < ApplicationController
   def index
   	@gene = Gene.all
   	@pcr = Pcr.all
-  	# if Gene.first.nil?
-  	# 	redirect_to new_pcr_path
-  	# end
+  	 if Gene.first.nil?
+  	 	redirect_to new_pcr_path
+  	 end
   end
 
   def new
@@ -16,7 +16,6 @@ class PcrsController < ApplicationController
     @pcr = Pcr.new(pcr_params)
     if  Gene.find_by_name(@pcr.gene.name)
       @pcr.gene = Gene.find(Gene.find_by_name(@pcr.gene.name).id)
-      @pcr.save
     end
     if @pcr.save
       redirect_to pcrs_path
